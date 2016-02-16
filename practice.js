@@ -98,6 +98,7 @@ undefined
 
 //Fix the setTimeout invocation so that the user object will be the focal object when getUsername is ran.
 
-setTimeout(function() {getMyUsername(myUser); }, 5000);
+//setTimeout(function() {getMyUsername(myUser); }, 5000);
 
+setTimeout(getMyUsername.bind(myUser), 5000);
 
