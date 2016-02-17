@@ -2,13 +2,19 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
-
+      the value of this is determined on the context in which its called
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
+      implicit(left of the dot binding, the obj is the context), 
+      explicit(call,apply, or bind, can pass arguments)
+      new binding (constuctor binding, this becomes the obj being created)
+      window binding (global scope, browser, produces errors in strict mode)
 
   // 3) What is the difference between call and apply?
-
+      apply takes an array (if dont know how many arg are comming in)
+      call give arguments one at a time, calling a function and passing obj as context
+      bind (does not invoke func, it returns a new function without calling it)
       //Answer
 
   // 4) What does .bind do?
@@ -43,9 +49,9 @@ var Car = function(make, model, year) {
     this.model = model;
     this.year = year; 
     this.move = 0;          // start at 0
-    this.moveCar = function() {
+    this.moveCar = function() {  //func that adds 10
       this.move +=10 ; 
-      return this.year; 
+      return this.move; 
     }
 }
   //Function Invocations Here
@@ -91,7 +97,7 @@ var getMyUsername = function(){
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
 //Note(no tests)
 //Answer Here
-undefined
+undefined   -  because this. isnt attached to anything
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
   //Answer Here
@@ -100,5 +106,5 @@ undefined
 
 //setTimeout(function() {getMyUsername(myUser); }, 5000);
 
-setTimeout(getMyUsername.bind(myUser), 5000);
+setTimeout(getMyUsername.bind(myUser), 5000);  //.bind doesnt invoke, just returns a new func with the context of the obj passed
 
